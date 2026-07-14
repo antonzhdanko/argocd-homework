@@ -31,8 +31,11 @@ spec:
               group_wait: 10s
               group_interval: 30s
               repeat_interval: 1h
-              receiver: slack-notifications
+              receiver: "null"
               routes:
+                - receiver: slack-notifications
+                  matchers:
+                    - alertname = "HomeworkPodCPUOverload"
                 - receiver: "null"
                   matchers:
                     - alertname = "Watchdog"
