@@ -1,6 +1,6 @@
 # Argo CD GitOps homework
 
-This private repository is the declarative source of truth for the Argo CD
+This separate repository is the declarative source of truth for the Argo CD
 homework deployment.
 
 Repository layout:
