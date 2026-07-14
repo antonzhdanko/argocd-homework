@@ -52,3 +52,20 @@ jenkins-homework   homework-15   Synced   Healthy
 ```
 
 ![Argo CD homework project](evidence/screenshots/argocd-project.png)
+
+## Monitoring
+
+The `monitoring` Argo CD Application deploys `kube-prometheus-stack` chart
+`87.15.2` with Prometheus, Alertmanager and Grafana.
+
+- Prometheus: <http://prometheus.k8s-3.sa/>
+- Grafana: <http://grafana.k8s-3.sa/>
+- CPU alert: `HomeworkPodCPUOverload`
+- Grafana dashboard: `Kubernetes Pod CPU and Memory`
+
+The Slack webhook and Grafana password are stored only as SealedSecrets. A
+small CPU load pod is deployed to produce a reproducible firing alert.
+
+![Grafana pod resources](evidence/screenshots/grafana-pod-resources.png)
+
+![Prometheus CPU alert](evidence/screenshots/prometheus-cpu-alert.png)
