@@ -18,3 +18,37 @@ https://antonzhdanko.github.io/sa2-35-26-jenkins/
 
 No plain-text passwords, access tokens or SSH private keys are committed.
 
+## Argo CD installation
+
+```bash
+helm repo add argo https://argoproj.github.io/argo-helm
+helm repo update argo
+helm upgrade --install argocd argo/argo-cd \
+  --version 10.1.3 \
+  --namespace argocd \
+  --create-namespace \
+  --values infrastructure/argocd-values.yaml \
+  --wait --timeout 15m
+```
+
+The Academy bastion forwards `argocd.k8s-3.sa` to HTTP NodePort `30007`.
+
+## Bootstrap
+
+Only the repository credential and root Application are applied manually. The
+remaining resources are reconciled from Git by Argo CD:
+
+```bash
+kubectl apply -f manifests/05-repository-sealedsecret.yaml
+kubectl apply -f bootstrap/root-application.yaml
+```
+
+Expected state:
+
+```text
+NAME               PROJECT       SYNC     HEALTHY
+homework-15-root   default       Synced   Healthy
+jenkins-homework   homework-15   Synced   Healthy
+```
+
+![Argo CD homework project](evidence/screenshots/argocd-project.png)
