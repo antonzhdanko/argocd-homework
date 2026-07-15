@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://antonzhdanko.github.io/sa2-35-26-jenkins/
     chart: jenkins-homework
-    targetRevision: 0.1.5
+    targetRevision: 0.1.6
     helm:
       releaseName: jenkins-gitops
       valuesObject:
