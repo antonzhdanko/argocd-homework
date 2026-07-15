@@ -22,9 +22,9 @@ No plain-text passwords, access tokens or SSH private keys are committed.
 
 The `Validate Kubernetes manifests` GitHub Actions workflow runs on pushes and
 pull requests that change `bootstrap/` or `manifests/`. It validates both
-directories in parallel with kubeconform running inside a pinned container and
-sends the final status to Slack. The webhook is stored as the repository secret
-`SLACK_WEBHOOK`.
+directories in parallel with kubeconform running inside a pinned container.
+The final status is published in the GitHub Actions job summary and is also sent
+to Slack when the repository secret `SLACK_WEBHOOK` contains an active webhook.
 
 ## Argo CD installation
 
