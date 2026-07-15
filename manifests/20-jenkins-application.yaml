@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://antonzhdanko.github.io/sa2-35-26-jenkins/
     chart: jenkins-homework
-    targetRevision: 0.1.2
+    targetRevision: 0.1.3
     helm:
       releaseName: jenkins-gitops
       valuesObject:
@@ -18,6 +18,10 @@ spec:
           existingSecret: jenkins-admin
           passwordKey: password
           email: antonzhdanko@gmail.com
+        viewer:
+          username: viewer
+          existingSecret: jenkins-viewer
+          passwordKey: password
         jenkins:
           url: http://jenkins-gitops.k8s-3.sa/
           numExecutors: 2
